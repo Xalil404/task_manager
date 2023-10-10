@@ -3,6 +3,10 @@ from taskmanager import app, db
 from taskmanager.models import Category, Task
 
 
+app_ctx = app.app_context()
+app_ctx.push()
+
+
 @app.route("/")
 def home():
     tasks = list(Task.query.order_by(Task.id).all())
